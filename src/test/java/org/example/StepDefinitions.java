@@ -59,21 +59,21 @@ public class StepDefinitions {
     }
     @When("I click on the section  What You ll Learn")
     public void i_click_on_the_section_what_you_ll_learn() {
-        driver.findElement(By.xpath("/html/body/nav/div/div/ul/li[1]/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"navmenu\"]/ul/li[1]/a")).click();
 
     }
     @Then("the button it should take me down of the page")
     public void the_button_it_should_take_me_down_of_the_page() {
-        Assert.assertEquals("Learn The Fundamentals",testingSearchPage.getHybridHeader());
+        Assert.assertEquals("Learn The Fundamentals",testingSearchPage.getLearnFundamentalsHeaderText());
 
     }
     @When("I click on the section  Instructors")
     public void i_click_on_the_section_instructors() {
-        driver.findElements(By.xpath("/html/body/nav/div/div/ul/li[1]/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"navmenu\"]/ul/li[3]/a")).click();
     }
     @Then("the button it will show me the instructors")
     public void the_button_it_will_show_me_the_instructors() {
-        Assert.assertEquals(" Our Instructors", testingSearchPage.getHybridHeader());
+        Assert.assertEquals("Our Instructors", testingSearchPage.getOurInstructorsHeaderText());
 
     }
 

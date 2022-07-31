@@ -29,7 +29,10 @@ public class TestingSearchPage {
     private WebElement learnFundamentalHeader;
 
     @FindBy(xpath = "//*[@id=\"navmenu\"]/ul/li[3]/a")
-    private WebElement instructorsSection;
+    private WebElement instructorSection;
+
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/h2")
+    private WebElement instructorSectionHeader;
 
     public TestingSearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -55,19 +58,19 @@ public class TestingSearchPage {
     }
 
     public void clickOnInstructorsSection(){
-        this.instructorsSection.click();
+        this.instructorSection.click();
     }
 
     public WebElement getHybridHeader(){
         return  this.hybridHeader;
     }
 
-    public String getLearnFundamentalsHeader(){
+    public String getLearnFundamentalsHeaderText(){
         return this.learnFundamentalHeader.getText();
     }
 
-    public String getOurInstructorsHeader(){
-        return  this.instructorsSection.getText();
+    public String getOurInstructorsHeaderText(){
+        return  this.instructorSectionHeader.getText();
     }
 
 
