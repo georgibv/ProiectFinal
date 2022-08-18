@@ -2,16 +2,10 @@ package PageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class StartTheEnrollmentPage {
-
-
-    @FindBy(xpath = "/html/body/section[1]/div/div/div/a")
-    private WebElement startTheEnrollmentFirst;
-
     @FindBy(xpath = "//*[@id=\"firstName\"]")
     private WebElement signUp_FirstName;
 
@@ -50,9 +44,6 @@ public class StartTheEnrollmentPage {
     @FindBy(xpath = "//*[@id=\"postCode\"]")
     private WebElement contactInformation_postCode;
 
-    @FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/button[2]")
-    private WebElement contactInformationNextButton;
-
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/h3")
     private WebElement courseOptions;
 
@@ -80,11 +71,8 @@ public class StartTheEnrollmentPage {
     @FindBy(xpath = "//*[@id=\"year\"]")
     private WebElement paymentInformation_expiryDateYear;
 
-    @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/button[2]")
-    private WebElement paymentInformationNextButton;
-
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[5]/a")
-    private WebElement returnToHomepageButton;
+    private WebElement successPageReturnToHomepageButton;
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[5]/h3")
     private WebElement successpage;
@@ -132,19 +120,6 @@ public class StartTheEnrollmentPage {
     public StartTheEnrollmentPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
-    public void fill_SignUp_form(Boolean enterWrongConfirmation ) {
-        //this.signUp_FirstName.sendKeys("Mirea");
-       // this.signUp_LastName.sendKeys("Georgiana");
-        //testingSearchPage.setSignup_LastName("Georgiana");
-        //this.signUp_UserName.sendKeys("Geo");
-       // this.signUp_Password.sendKeys("1234");
-        if(enterWrongConfirmation){
-            this.signUp_ConfirmPassword.sendKeys("12345");
-        }else{
-            this.signUp_ConfirmPassword.sendKeys("1234");
-        }
-    }
     public void fill_personalInformation_LastName(String lastName){
         this.signUp_LastName.sendKeys(lastName);
     }
@@ -164,14 +139,6 @@ public class StartTheEnrollmentPage {
     }
     public void click_signUp_NextForSignUp(){
         this.signUp_NextForSignUp.click();
-    }
-    public void fill_ContactInformation_form() {
-        //this.contactInformation_email.sendKeys("georgic88@gmail.com");
-        //this.contactInformation_phone.sendKeys("07424772480");
-       // this.contactInformation_contry.sendKeys("Romania");
-       // this.contactInformation_city.sendKeys("Brasov");
-       // this.contactInformation_postCode.sendKeys("500600");
-
     }
 
     public void clear_PaymentInformation_cvc(){
@@ -195,14 +162,6 @@ public class StartTheEnrollmentPage {
         this.contactInformation_postCode.sendKeys(postCode);
     }
 
-
-    public void fill_PaymentInformation_form(){
-        //this.paymentInformation_cardHolderName.sendKeys("Mirea");
-       // this.paymentInformation_cardNumber.sendKeys("4444-555-6666-7777");
-       // this.paymentInformation_cvc.sendKeys("000");
-       // this.paymentInformation_expiryDateMonth.sendKeys("august");
-       // this.paymentInformation_expiryDateYear.sendKeys("2022");
-    }
     public void fill_PaymentInformation_CardHolderName(String cardHolderName){
         this.paymentInformation_cardHolderName.sendKeys(cardHolderName);
     }
@@ -219,32 +178,8 @@ public class StartTheEnrollmentPage {
         this.paymentInformation_expiryDateYear.sendKeys(year);
     }
 
-    public void fill_PaymentInformation_formWrongDates(Boolean enterWrongData){
-        this.paymentInformation_cardHolderName.sendKeys("Mirea");
-        if(enterWrongData){
-            this.paymentInformation_cardNumber.sendKeys("4444-555-6666-7777");
-        }else{
-            this.paymentInformation_cardNumber.sendKeys("4444-555-6666");
-        }
-        if(enterWrongData){
-            this.paymentInformation_cvc.sendKeys("000");
-        }else {
-            this.paymentInformation_cvc.sendKeys("1");
-        }
-    }
-
-    public void fill_PaymentInformation_formMandatoryMonthYear(Boolean doNotSelected){
-        if(doNotSelected) {
-            this.paymentInformation_expiryDateMonth.sendKeys("august");
-        }else {
-            this.paymentInformation_expiryDateMonth.sendKeys("");
-        }
-
-        if(doNotSelected){
-            this.paymentInformation_expiryDateYear.sendKeys("2022");
-        }else {
-            this.paymentInformation_expiryDateYear.sendKeys("");
-        }
+    public void clickOnPaymentInformation_nextButton(){
+        this.paymentInformation_nextButton.click();
     }
 
     public WebElement getPersonalInformationForm(){
@@ -262,32 +197,22 @@ public class StartTheEnrollmentPage {
     public WebElement getPaymentInformation(){
         return this.paymentInformation;
     }
+    public void clickOnCourseOptionsFirstChoise(){
+        this.courseOptionsFirstChoise.click();
+    }
+    public void clickOnCourseOptionsNextButton()
+    {
+        this.courseOptionsNextButton.click();
+    }
 
     public WebElement getSuccesspage(){
         return this.successpage;
     }
 
-  //  public WebElement getSignUp_FirstName() {
-    //    return this.signUp_FirstName;
-
-  //  }
-
-  //  public WebElement getSignUp_LastName() {
-
-    //    return this.signUp_LastName;
-   // }
-
-   // public WebElement getSignUp_UserName() {
-    //    return this.signUp_UserName;
-  //  }
-
-   // public WebElement getSignUp_Password() {
-    //    return this.signUp_Password;
-   // }
-
-   // public WebElement getSignUp_ConfirmPassword() {
-   //     return this.signUp_ConfirmPassword;
-  //  }
+    public void clickOnSuccessPageReturnToHomepageButton()
+    {
+        this.successPageReturnToHomepageButton.click();
+    }
 
     public WebElement getsignUp_FirstNameIsRequired(){
         return this.signUp_FirstNameIsRequired;
@@ -317,6 +242,10 @@ public class StartTheEnrollmentPage {
         return this.contactInformation_PhoneNumberRequired;
     }
 
+    public void clickOnContactInformation_NextButton(){
+        this.contactInformation_NextButton.click();
+    }
+
     public WebElement getcontactInformation_CountryRequired(){
         return this.contactInformation_CountryRequired;
     }
@@ -327,51 +256,6 @@ public class StartTheEnrollmentPage {
     public WebElement getcontactInformation_PostCodeRequired(){
         return this.contactInformation_PostCodeRequired;
     }
-
-   // public WebElement getpaymentInformation_MonthAndYearNotSelected(){
-    //    return this.paymentInformation_MonthAndYearNotSelected;
-    //}
-
-
-
-  //  public void clickOnStartTheEnrollmentFirst() {
-    //    this.startTheEnrollmentFirst.click();
-   // }
-
-   // public void clickNextButtonForSignUp() {
-   //     this.signUp_NextForSignUp.click();
-   // }
-
-    //public void clickcontactInformationNextButton(){
-     //   this.contactInformationNextButton.click();
-    //}
-
-    //public void clickcourseOptionsFirstChoise(){
-    //    this.courseOptionsFirstChoise.click();
-    //}
-
-   // public void clickcourseOptionsNextButton(){
-   //     this.courseOptionsNextButton.click();
-   // }
-
-    //public void clickpaymentInformationNextButton(){
-   //     this.paymentInformationNextButton.click();
-   // }
-
-    //public void clickreturnToHomepageButton(){
-       // this.returnToHomepageButton.click();
-
-   // }
-
-   // public void clickpaymentInformation_nextButton(){
-     //   this.paymentInformation_nextButton.click();
-   // }
-
-    //public void clickcontactInformation_NextButton(){
-    //    this.contactInformation_NextButton.click();
-   // }
-
-
 
 }
 

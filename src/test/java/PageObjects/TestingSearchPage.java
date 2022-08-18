@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TestingSearchPage {
 
-    @FindBy(xpath = "/html/body/section[3]/div/div/div[2]/div/div/p")
+    @FindBy(xpath = "/html/body/section[3]/div/div/div[2]/div/div/a")
     private WebElement readMoreHybridButton;
 
     @FindBy(xpath = "/html/body/a")
@@ -20,6 +20,10 @@ public class TestingSearchPage {
 
     @FindBy(xpath = "/html/body/a")
     private WebElement virtualReturnButton;
+
+    @FindBy(xpath = "//*[@id=\"learn-fundamentals\"]/div/div/div[2]/a")
+    private WebElement readMoreFundamentalsButton;
+
 
     @FindBy(xpath = "/html/body/section[3]/div/div/div[2]/div/div/h3")
     private WebElement hybridHeader;
@@ -40,10 +44,6 @@ public class TestingSearchPage {
     private WebElement startTheEnrollment;
 
     @FindBy(xpath = "//*[@id=\"learn-fundamentals\"]")
-    private WebElement learnTheFundamentals;
-    //*[@id="learn-fundamentals"]
-
-    @FindBy(xpath = "//*[@id=\"learn-fundamentals\"]")
     private WebElement readMoreLearnTheFundamentalsSection;
 
     @FindBy(xpath = "/html/body/a")
@@ -62,24 +62,13 @@ public class TestingSearchPage {
     private WebElement emailAdress;
 
     @FindBy(xpath = "/html/body/section[2]/div/div/div/button")
-    private WebElement submitButton;
+    private WebElement newsletterSubmitButton;
 
     @FindBy (xpath = "//*[@id=\"instructors\"]")
     private WebElement instructorSocialMediaPage;
 
     @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[1]/div/div/a[2]/i")
     private WebElement socialMediaButton;
-
-    @FindBy(xpath = "//*[@id=\"questions\"]")
-    private WebElement frequentlyAskedQuestions;
-
-
-    @FindBy(xpath = "//*[@id=\"firstName\"]")
-    private WebElement signUp_FirstName;
-
-    @FindBy(xpath = "//*[@id=\"lastName\"]")
-    private WebElement signUp_LastName;
-
     @FindBy(xpath = "//*[@id=\"questions\"]")
     private WebElement faqSection;
 
@@ -87,7 +76,7 @@ public class TestingSearchPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickOnHybridButton(){
+    public void clickOnReadMoreHybridButton(){
         this.readMoreHybridButton.click();
     }
 
@@ -95,10 +84,13 @@ public class TestingSearchPage {
         this.hybridReturnButton.click();
     }
 
-    public void clickOnVirtualButton(){
+    public void clickOnReadMoreVirtualButton(){
         this.readMoreVirtualButton.click();
     }
 
+    public void clickOnReadMoreFundamentalsButton(){
+        this.readMoreFundamentalsButton.click();
+    }
     public void clickOnVirtulReturnButton(){
         this.virtualReturnButton.click();
     }
@@ -127,29 +119,14 @@ public class TestingSearchPage {
         this.returnLearnSelenium.click();
     }
 
-    public void clickSubmitButton(){
-        this.submitButton.click();
+    public void clickNewsletterSubmitButton(){
+        this.newsletterSubmitButton.click();
     }
 
     public void clicksocialMediaButton(){
         this.socialMediaButton.click();
     }
 
-    public void clickOnFrequentlyAskedQuestions(){
-        this.frequentlyAskedQuestions.click();
-    }
-
-    public WebElement getSignUp_FirstName(){
-        return this.signUp_FirstName;
-
-    }
-    public WebElement getSignUp_LastName(){
-        return this.signUp_LastName;
-    }
-
-    public void setSignup_LastName(String val){
-        this.signUp_LastName.sendKeys(val);
-    }
     public WebElement getHybridHeader(){
         return  this.hybridHeader;
     }
@@ -165,49 +142,16 @@ public class TestingSearchPage {
     public void setEmailAdress(String email){
         this.emailAdress.sendKeys(email);
     }
-    public WebElement getStartTheEnrollmentUrl (){
-        return this.startTheEnrollment.findElement(By.xpath("/html/body/div"));
-
-    }
-
     public WebElement getReadMoreLearnTheFundamentalsSection(){
         return this.readMoreLearnTheFundamentalsSection;
     }
-    public WebElement getReturnLearnTheFundamentals(){
-        return this.returnLearnTheFundamentals;
-    }
+
     public WebElement getLearnSeleniumSection(){
         return this.learnSeleniumSection;
-    }
-
-    public WebElement getReadMoreLearnSelenium(){
-        return this.readMoreLearnSelenium;
-    }
-
-    public WebElement getReturnLearnSelenium(){
-        return this.returnLearnSelenium;
     }
 
     public WebElement getInstructorsSocialMediaPageHeader(){
         return this.instructorSocialMediaPage;
 
     }
-    public WebElement getFrequentlyAskedQuestionsHeader(){
-        return this.frequentlyAskedQuestions;
-    }
-
-    private WebElement getAccordionSection() {
-        return faqSection.findElement(By.className("accordion-flush"));
-    }
-
-    private WebElement getQuestionByNumber(int index) {
-        WebElement element = getAccordionSection();
-        return element.findElements(By.className("h3 > button")).get(index);
-    }
-
-    public void clickOnAccordionQuestions() {
-        for (int i = 0; i <= 5; i++)
-            getQuestionByNumber(i).click();
-    }
-
 }
