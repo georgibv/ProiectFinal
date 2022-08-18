@@ -64,7 +64,24 @@ public class TestingSearchPage {
     @FindBy(xpath = "/html/body/section[2]/div/div/div/button")
     private WebElement submitButton;
 
+    @FindBy (xpath = "//*[@id=\"instructors\"]")
+    private WebElement instructorSocialMediaPage;
 
+    @FindBy(xpath = "//*[@id=\"instructors\"]/div/div/div[1]/div/div/a[2]/i")
+    private WebElement socialMediaButton;
+
+    @FindBy(xpath = "//*[@id=\"questions\"]")
+    private WebElement frequentlyAskedQuestions;
+
+
+    @FindBy(xpath = "//*[@id=\"firstName\"]")
+    private WebElement signUp_FirstName;
+
+    @FindBy(xpath = "//*[@id=\"lastName\"]")
+    private WebElement signUp_LastName;
+
+    @FindBy(xpath = "//*[@id=\"questions\"]")
+    private WebElement faqSection;
 
     public TestingSearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -114,6 +131,25 @@ public class TestingSearchPage {
         this.submitButton.click();
     }
 
+    public void clicksocialMediaButton(){
+        this.socialMediaButton.click();
+    }
+
+    public void clickOnFrequentlyAskedQuestions(){
+        this.frequentlyAskedQuestions.click();
+    }
+
+    public WebElement getSignUp_FirstName(){
+        return this.signUp_FirstName;
+
+    }
+    public WebElement getSignUp_LastName(){
+        return this.signUp_LastName;
+    }
+
+    public void setSignup_LastName(String val){
+        this.signUp_LastName.sendKeys(val);
+    }
     public WebElement getHybridHeader(){
         return  this.hybridHeader;
     }
@@ -152,6 +188,26 @@ public class TestingSearchPage {
         return this.returnLearnSelenium;
     }
 
+    public WebElement getInstructorsSocialMediaPageHeader(){
+        return this.instructorSocialMediaPage;
 
+    }
+    public WebElement getFrequentlyAskedQuestionsHeader(){
+        return this.frequentlyAskedQuestions;
+    }
+
+    private WebElement getAccordionSection() {
+        return faqSection.findElement(By.className("accordion-flush"));
+    }
+
+    private WebElement getQuestionByNumber(int index) {
+        WebElement element = getAccordionSection();
+        return element.findElements(By.className("h3 > button")).get(index);
+    }
+
+    public void clickOnAccordionQuestions() {
+        for (int i = 0; i <= 5; i++)
+            getQuestionByNumber(i).click();
+    }
 
 }
